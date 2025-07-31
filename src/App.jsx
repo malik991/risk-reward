@@ -32,8 +32,8 @@ function App() {
     const riskPerToken = riskAmount / tokens;
     const rewardPerToken = riskPerToken * rrRatioNum;
 
-    setStopLoss((entryPriceNum - riskPerToken).toFixed(4));
-    setTakeProfit((entryPriceNum + rewardPerToken).toFixed(4));
+    setStopLoss((entryPriceNum - riskPerToken).toFixed(8));
+    setTakeProfit((entryPriceNum + rewardPerToken).toFixed(8));
     setCalculatedRiskAmount(riskAmount.toFixed(2));
   };
 
