@@ -10,6 +10,7 @@ function App() {
   const [stopLoss, setStopLoss] = useState(null);
   const [takeProfit, setTakeProfit] = useState(null);
   const [calculatedRiskAmount, setCalculatedRiskAmount] = useState(null);
+  const [calculatedProfitAmount, setCalculatedProfitAmount] = useState("");
 
   const calculateRR = () => {
     if (!entryPrice || !capital || !riskInput || !rrRatio) {
@@ -35,6 +36,7 @@ function App() {
     setStopLoss((entryPriceNum - riskPerToken).toFixed(8));
     setTakeProfit((entryPriceNum + rewardPerToken).toFixed(8));
     setCalculatedRiskAmount(riskAmount.toFixed(2));
+    setCalculatedProfitAmount((rewardPerToken * tokens).toFixed(2)); // ✅ Add this
   };
 
   return (
@@ -103,6 +105,10 @@ function App() {
           <div className="bg-blue-50 rounded-lg p-4 text-center space-y-2 border border-blue-200">
             <p className="text-gray-700 text-sm">
               <strong>Effective Risk Amount:</strong> ${calculatedRiskAmount}
+            </p>
+            <p className="text-gray-700 text-sm">
+              <strong>Effective Profit Amount:</strong> $
+              {calculatedProfitAmount}
             </p>
             <p className="text-blue-700 text-lg">
               <strong>Stop-Loss:</strong> ${stopLoss}
